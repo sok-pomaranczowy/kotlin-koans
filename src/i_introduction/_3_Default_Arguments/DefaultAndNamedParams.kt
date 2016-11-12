@@ -14,12 +14,26 @@ fun todoTask3(): Nothing = TODO(
     documentation = doc2(),
     references = { name: String -> JavaCode3().foo(name); foo(name) })
 
-fun foo(name: String): String = todoTask3()
+/*
+*
+private int defaultNumber = 42;
+
+    public String foo(String name, int number, boolean toUpperCase) {
+        return (toUpperCase ? name.toUpperCase() : name) + number;
+    }
+*/
+
+fun foo(name: String, number:Int = 42, toUpperCase:Boolean=false): String {
+    var returnString=name
+    if(toUpperCase == true){
+         returnString = returnString.toUpperCase()
+    }
+    return returnString+number
+}
 
 fun task3(): String {
-    todoTask3()
-//    return (foo("a") +
-//            foo("b", number = 1) +
-//            foo("c", toUpperCase = true) +
-//            foo(name = "d", number = 2, toUpperCase = true))
+    return (foo("a") +
+            foo("b", number = 1) +
+            foo("c", toUpperCase = true) +
+            foo(name = "d", number = 2, toUpperCase = true))
 }
