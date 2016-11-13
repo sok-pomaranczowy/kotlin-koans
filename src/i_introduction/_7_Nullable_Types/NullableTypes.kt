@@ -22,10 +22,12 @@ fun todoTask7(client: Client?, message: String?, mailer: Mailer): Nothing = TODO
     references = { JavaCode7().sendMessageToClient(client, message, mailer) }
 )
 
-fun sendMessageToClient(
-        client: Client?, message: String?, mailer: Mailer
-) {
-    todoTask7(client, message, mailer)
+fun sendMessageToClient(client: Client?, message: String?, mailer: Mailer) {
+    client?: return
+    message?: return
+    client?.personalInfo ?: return
+    client?.personalInfo?.email ?: return
+    mailer.sendMessage(client.personalInfo.email,message)
 }
 
 class Client (val personalInfo: PersonalInfo?)
